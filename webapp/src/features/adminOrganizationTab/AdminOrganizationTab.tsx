@@ -5,9 +5,9 @@ import AdminOrganizationTabIntersection from '../adminOrganizationTabIntersectio
 import AdminOrganizationTabUser from '../adminOrganizationTabUser/AdminOrganizationTabUser'
 import AdminEditOrganization from '../adminEditOrganization/AdminEditOrganization'
 import AdminOrganizationDeleteMenu from '../../components/AdminOrganizationDeleteMenu'
-import { IoChevronBackCircleOutline, IoRefresh } from 'react-icons/io5'
+import { IoRefresh } from 'react-icons/io5'
 import { AiOutlinePlusCircle } from 'react-icons/ai'
-import Grid from '@mui/material/Grid'
+import Grid2 from '@mui/material/Grid2'
 import EditIcon from '@mui/icons-material/Edit'
 import { DropdownList } from 'react-widgets'
 import {
@@ -26,16 +26,14 @@ import {
   setSelectedOrg,
   AdminOrgSummary,
 } from './adminOrganizationTabSlice'
-import { useSelector, useDispatch } from 'react-redux'
 
 import '../adminRsuTab/Admin.css'
-import { RootState } from '../../store'
-import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { NotFound } from '../../pages/404'
 import toast from 'react-hot-toast'
 import { changeOrganization, selectOrganizationName, setOrganizationList } from '../../generalSlices/userSlice'
 import { ConditionalRenderIntersection, ConditionalRenderRsu } from '../../feature-flags'
+import { useAppDispatch, useAppSelector } from '../../hooks'
 
 const getTitle = (activeTab: string) => {
   if (activeTab === undefined) {
@@ -49,24 +47,24 @@ const getTitle = (activeTab: string) => {
 }
 
 const AdminOrganizationTab = () => {
-  const dispatch: ThunkDispatch<RootState, void, AnyAction> = useDispatch()
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const location = useLocation()
 
   const activeTab = location.pathname.split('/')[4]
   const title = getTitle(activeTab)
 
-  const orgData = useSelector(selectOrgData)
-  const selectedOrg = useSelector(selectSelectedOrg)
-  const selectedOrgName = useSelector(selectSelectedOrgName)
-  const selectedOrgEmail = useSelector(selectSelectedOrgEmail)
-  const rsuTableData = useSelector(selectRsuTableData)
-  const intersectionTableData = useSelector(selectIntersectionTableData)
-  const userTableData = useSelector(selectUserTableData)
+  const orgData = useAppSelector(selectOrgData)
+  const selectedOrg = useAppSelector(selectSelectedOrg)
+  const selectedOrgName = useAppSelector(selectSelectedOrgName)
+  const selectedOrgEmail = useAppSelector(selectSelectedOrgEmail)
+  const rsuTableData = useAppSelector(selectRsuTableData)
+  const intersectionTableData = useAppSelector(selectIntersectionTableData)
+  const userTableData = useAppSelector(selectUserTableData)
 
   const notifySuccess = (message: string) => toast.success(message)
   const notifyError = (message: string) => toast.error(message)
-  const defaultOrgName = useSelector(selectOrganizationName)
+  const defaultOrgName = useAppSelector(selectOrganizationName)
   var defaultOrgData = orgData.find((org) => org.name === defaultOrgName)
 
   useEffect(() => {
@@ -168,8 +166,8 @@ const AdminOrganizationTab = () => {
           path="/"
           element={
             <div>
-              <Grid container>
-                <Grid item xs={0}>
+              <Grid2 container>
+                <Grid2 size={0}>
                   <DropdownList
                     style={{ width: '250px' }}
                     className="form-dropdown"
@@ -179,8 +177,8 @@ const AdminOrganizationTab = () => {
                     value={selectedOrg}
                     onChange={(value) => dispatch(setSelectedOrg(value))}
                   />
-                </Grid>
-                <Grid item xs={0}>
+                </Grid2>
+                <Grid2 size={0}>
                   <button
                     className="delete_button"
                     onClick={(_) => navigate('editOrganization/' + selectedOrg?.name)}
@@ -188,14 +186,14 @@ const AdminOrganizationTab = () => {
                   >
                     <EditIcon size={20} component={undefined} style={{ color: 'white' }} />
                   </button>
-                </Grid>
-                <Grid item xs={0}>
+                </Grid2>
+                <Grid2 size={0}>
                   <AdminOrganizationDeleteMenu
                     deleteOrganization={() => handleOrgDelete(selectedOrgName)}
                     selectedOrganization={selectedOrgName}
                   />
-                </Grid>
-              </Grid>
+                </Grid2>
+              </Grid2>
 
               <div className="scroll-div-org-tab">
                 <>

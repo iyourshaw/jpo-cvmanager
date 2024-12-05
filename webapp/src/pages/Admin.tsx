@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 import { updateTableData as updateRsuTableData } from '../features/adminRsuTab/adminRsuTabSlice'
 import { updateTableData as updateIntersectionTableData } from '../features/adminIntersectionTab/adminIntersectionTabSlice'
 import { getAvailableUsers } from '../features/adminUserTab/adminUserTabSlice'
 import '../features/adminRsuTab/Admin.css'
-import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit'
-import { RootState } from '../store'
 import AdminOrganizationTab from '../features/adminOrganizationTab/AdminOrganizationTab'
 import AdminRsuTab from '../features/adminRsuTab/AdminRsuTab'
 import AdminUserTab from '../features/adminUserTab/AdminUserTab'
@@ -15,9 +12,10 @@ import { getUserNotifications } from '../features/adminNotificationTab/adminNoti
 import VerticalTabs from '../components/VerticalTabs'
 import AdminIntersectionTab from '../features/adminIntersectionTab/AdminIntersectionTab'
 import { evaluateFeatureFlags } from '../feature-flags'
+import { useAppDispatch } from '../hooks'
 
 function Admin() {
-  const dispatch: ThunkDispatch<RootState, void, AnyAction> = useDispatch()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (evaluateFeatureFlags('rsu')) dispatch(updateRsuTableData())
@@ -34,7 +32,7 @@ function Admin() {
         </div>
       ) : (
         <div id="admin">
-          <h2 className="adminHeader">CV Manager Admin Interface</h2>
+          <h2 className="adminHeader">Admin Interface</h2>
           <VerticalTabs
             notFoundRoute={
               <NotFound

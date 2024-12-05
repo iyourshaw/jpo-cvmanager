@@ -45,6 +45,7 @@ class EnvironmentVars {
   static ENABLE_INTERSECTION_FEATURES = process.env.REACT_APP_ENABLE_INTERSECTION_FEATURES !== 'false'
   static ENABLE_WZDX_FEATURES = process.env.REACT_APP_ENABLE_WZDX_FEATURES !== 'false'
 
+  static cvmanagerBaseEndpoint = `${this.getBaseApiUrl()}`
   static rsuInfoEndpoint = `${this.getBaseApiUrl()}/rsuinfo`
   static rsuOnlineEndpoint = `${this.getBaseApiUrl()}/rsu-online-status`
   static rsuCountsEndpoint = `${this.getBaseApiUrl()}/rsucounts`

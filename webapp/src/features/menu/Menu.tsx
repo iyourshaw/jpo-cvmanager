@@ -1,8 +1,6 @@
 import React from 'react'
 import './Menu.css'
 import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { selectRole } from '../../generalSlices/userSlice'
 import { selectCountList, selectSelectedRsu } from '../../generalSlices/rsuSlice'
 import { selectConfigList } from '../../generalSlices/configSlice'
 import { selectDisplayCounts, selectView, setDisplay, setSortedCountList, selectDisplayRsuErrors } from './menuSlice'
@@ -10,8 +8,7 @@ import { SecureStorageManager } from '../../managers'
 import DisplayCounts from './DisplayCounts'
 import DisplayRsuErrors from './DisplayRsuErrors'
 import ConfigureRSU from './ConfigureRSU'
-import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit'
-import { RootState } from '../../store'
+import { useAppDispatch, useAppSelector } from '../../hooks'
 
 const menuStyle: React.CSSProperties = {
   background: '#0e2052',
@@ -26,14 +23,13 @@ const menuStyle: React.CSSProperties = {
 }
 
 const Menu = () => {
-  const dispatch: ThunkDispatch<RootState, void, AnyAction> = useDispatch()
-  const userRole = useSelector(selectRole)
-  const countList = useSelector(selectCountList)
-  const selectedRsu = useSelector(selectSelectedRsu)
-  const selectedRsuList = useSelector(selectConfigList)
-  const displayCounts = useSelector(selectDisplayCounts)
-  const displayRsuErrors = useSelector(selectDisplayRsuErrors)
-  const view = useSelector(selectView)
+  const dispatch = useAppDispatch()
+  const countList = useAppSelector(selectCountList)
+  const selectedRsu = useAppSelector(selectSelectedRsu)
+  const selectedRsuList = useAppSelector(selectConfigList)
+  const displayCounts = useAppSelector(selectDisplayCounts)
+  const displayRsuErrors = useAppSelector(selectDisplayRsuErrors)
+  const view = useAppSelector(selectView)
 
   useEffect(() => {
     dispatch(setSortedCountList(countList))

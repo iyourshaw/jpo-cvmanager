@@ -5,7 +5,7 @@ import { useFormik } from 'formik'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
-import { Button, Card, CardActions, CardContent, Divider, Grid, TextField } from '@mui/material'
+import { Button, Card, CardActions, CardContent, Divider, Grid2, TextField } from '@mui/material'
 import dayjs from 'dayjs'
 
 type Props = {
@@ -66,8 +66,8 @@ export const ReportRequestEditForm = (props: Props) => {
       <Card>
         <Divider />
         <CardContent>
-          <Grid container spacing={3}>
-            <Grid item md={6} xs={12}>
+          <Grid2 container spacing={3}>
+            <Grid2 size={{ md: 6, xs: 12 }}>
               <TextField
                 error={Boolean(formik.touched.intersectionId && formik.errors.intersectionId)}
                 fullWidth
@@ -76,8 +76,8 @@ export const ReportRequestEditForm = (props: Props) => {
                 onChange={formik.handleChange}
                 value={formik.values.intersectionId}
               />
-            </Grid>
-            <Grid item md={4} xs={12}>
+            </Grid2>
+            <Grid2 size={{ md: 4, xs: 12 }}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateTimePicker
                   value={dayjs(formik.values.startDate)}
@@ -85,8 +85,8 @@ export const ReportRequestEditForm = (props: Props) => {
                   disableFuture
                 />
               </LocalizationProvider>
-            </Grid>
-            <Grid item md={4} xs={12}>
+            </Grid2>
+            <Grid2 size={{ md: 4, xs: 12 }}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateTimePicker
                   value={dayjs(formik.values.endDate)}
@@ -94,8 +94,8 @@ export const ReportRequestEditForm = (props: Props) => {
                   disableFuture
                 />
               </LocalizationProvider>
-            </Grid>
-          </Grid>
+            </Grid2>
+          </Grid2>
         </CardContent>
         <CardActions
           sx={{
