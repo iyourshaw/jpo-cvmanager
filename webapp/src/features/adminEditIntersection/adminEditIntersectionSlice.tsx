@@ -247,14 +247,14 @@ export const adminEditIntersectionSlice = createSlice({
         return { name: val }
       })
       state.value.rsus = allowedSelections.rsus.map((val) => {
-        return { name: val?.replace('/32', '') } // Remove /32 from the end of the RSU name for human readability
+        return { name: val?.replace('/32', '')?.replace('/128', '') } // Remove /32 or /128 from the end of the RSU name for human readability
       })
 
       state.value.selectedOrganizations = apiData.intersection_data.organizations.map((val) => {
         return { name: val }
       })
       state.value.selectedRsus = apiData.intersection_data.rsus.map((val) => {
-        return { name: val?.replace('/32', '') } // Remove /32 from the end of the RSU name for human readability
+        return { name: val?.replace('/32', '')?.replace('/128', '') } // Remove /32 or /128 from the end of the RSU name for human readability
       })
 
       state.value.apiData = apiData

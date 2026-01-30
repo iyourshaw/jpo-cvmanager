@@ -50,7 +50,7 @@ export const convertApiJsonToKeyedFormat = (
     data = []
     for (let i = 0; i < apiJson['rsus'].length; i++) {
       const value = apiJson['rsus'][i]
-      const temp = { id: i, name: value?.replace('/32', '') }
+      const temp = { id: i, name: value?.replace('/32', '')?.replace('/128', '') }
       data.push(temp)
     }
     keyedApiJson.rsus = data
