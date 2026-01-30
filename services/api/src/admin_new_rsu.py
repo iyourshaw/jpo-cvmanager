@@ -167,7 +167,7 @@ class GeoPositionSchema(Schema):
 
 
 class AdminNewRsuSchema(Schema):
-    ip = fields.IPv4(required=True)
+    ip = fields.IP(required=True)
     geo_position = fields.Nested(GeoPositionSchema, required=True)
     milepost = fields.Decimal(required=True)
     primary_route = fields.Str(required=True)

@@ -90,7 +90,7 @@ def query_snmp_msgfwd_authorized(rsu_ip: str, organization: ORG_ROLE_LITERAL):
 
 # REST endpoint resource class and schema
 class RsuQueryMsgFwdSchema(Schema):
-    rsu_ip = fields.IPv4(required=True)
+    rsu_ip = fields.IP(required=True)
 
 
 class RsuQueryMsgFwd(Resource):

@@ -346,7 +346,7 @@ class AdminIntersectionPatchSchema(Schema):
     ref_pt = fields.Nested(GeoPositionSchema, required=True)
     bbox = fields.Nested(GeoPolygonSchema, required=False)
     intersection_name = fields.String(required=False)
-    origin_ip = fields.IPv4(required=False)
+    origin_ip = fields.IP(required=False)
     organizations_to_add = fields.List(fields.String(), required=True)
     organizations_to_remove = fields.List(fields.String(), required=True)
     rsus_to_add = fields.List(fields.String(), required=True)

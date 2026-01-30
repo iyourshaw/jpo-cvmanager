@@ -129,7 +129,7 @@ def get_rsu_online_statuses(user: EnvironWithOrg):
 
 # REST endpoint resource class
 class RsuOnlineStatusSchema(Schema):
-    rsu_ip = fields.IPv4(required=False)
+    rsu_ip = fields.IP(required=False)
 
 
 class RsuOnlineStatus(Resource):

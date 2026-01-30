@@ -497,8 +497,8 @@ class AdminOrgPatchSchema(Schema):
     users_to_add = fields.List(fields.Nested(UserRoleSchema), required=True)
     users_to_modify = fields.List(fields.Nested(UserRoleSchema), required=True)
     users_to_remove = fields.List(fields.Nested(UserRoleSchema), required=True)
-    rsus_to_add = fields.List(fields.IPv4(), required=True)
-    rsus_to_remove = fields.List(fields.IPv4(), required=True)
+    rsus_to_add = fields.List(fields.IP(), required=True)
+    rsus_to_remove = fields.List(fields.IP(), required=True)
     intersections_to_add = fields.List(fields.Integer, required=True)
     intersections_to_remove = fields.List(fields.Integer, required=True)
 

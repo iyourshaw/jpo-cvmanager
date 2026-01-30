@@ -52,7 +52,7 @@ def start_upgrade_task(rsu_upgrade_data):
 
 
 class RunFirmwareUpgradeSchema(Schema):
-    ipv4_address = fields.IPv4(required=True)
+    ipv4_address = fields.IP(required=True)
     manufacturer = fields.Str(required=True)
     model = fields.Str(required=True)
     ssh_username = fields.Str(required=True)

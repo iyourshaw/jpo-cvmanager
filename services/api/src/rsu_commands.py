@@ -170,7 +170,7 @@ def perform_command(command, organization, role, rsu_list, args):
 # REST endpoint resource class and schema
 class RsuCommandRequestSchema(Schema):
     command = fields.Str(required=True)
-    rsu_ip = fields.List(fields.IPv4(required=True))
+    rsu_ip = fields.List(fields.IP(required=True))
     args = fields.Dict(required=True)
 
 

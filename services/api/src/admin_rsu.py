@@ -262,7 +262,7 @@ class AdminRsuGetAllSchema(Schema):
 
 
 class AdminRsuGetDeleteSchema(Schema):
-    rsu_ip = fields.IPv4(required=True)
+    rsu_ip = fields.IP(required=True)
 
 
 class GeoPositionSchema(Schema):
@@ -271,8 +271,8 @@ class GeoPositionSchema(Schema):
 
 
 class AdminRsuPatchSchema(Schema):
-    orig_ip = fields.IPv4(required=True)
-    ip = fields.IPv4(required=True)
+    orig_ip = fields.IP(required=True)
+    ip = fields.IP(required=True)
     geo_position = fields.Nested(GeoPositionSchema, required=True)
     milepost = fields.Decimal(required=True)
     primary_route = fields.Str(required=True)
