@@ -154,5 +154,6 @@
     "json",
     "jsonc",
     "markdown"
-  ]
+  ],
+  "snyk.advanced.autoSelectOrganization": true
 }

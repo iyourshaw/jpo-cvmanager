@@ -9,3 +9,9 @@ htmlcov
 .pytest_cache
 local_blob_storage
 services/coverage.xml
+resources/mongodumps
+services/intersection-api/api/out.txt
+services/intersection-api/asn1_codec
+.github/workflows/sonar.yml
+.idea
+
