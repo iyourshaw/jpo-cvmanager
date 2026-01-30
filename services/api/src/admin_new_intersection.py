@@ -237,7 +237,7 @@ class AdminNewIntersectionSchema(Schema):
     bbox = fields.Nested(GeoPolygonSchema, required=False)
     intersection_name = fields.String(required=False)
     origin_ip = fields.IP(required=False)
-    rsus = fields.List(fields.IPv4(), required=True)
+    rsus = fields.List(fields.IP(), required=True)
 
 
 class AdminNewIntersection(Resource):
